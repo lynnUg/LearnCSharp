@@ -35,12 +35,12 @@ namespace LearnCSharp
 
         private static void TranslateIntoFrench(Document doc)
         {
-            //throw new NotImplementedException();
+           
             Console.WriteLine("converting to french");
         }
         private static void TranslateIntoLuganda(Document doc)
         {
-            //throw new NotImplementedException();
+            
             Console.WriteLine("converting to luganda");
         }
 

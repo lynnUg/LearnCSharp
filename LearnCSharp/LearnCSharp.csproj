@@ -34,6 +34,14 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8854.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8854.1\lib\net40\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Delegates\Document.cs" />
     <Compile Include="Delegates\DocumentProcessor.cs" />
+    <Compile Include="LINQ\ExtendStringClass.cs" />
+    <Compile Include="LINQ\LinqSamples.cs" />
     <Compile Include="Polymorphism\FireFighter.cs" />
     <Compile Include="Polymorphism\FireFighterBase.cs" />
     <Compile Include="Polymorphism\FireStation.cs" />

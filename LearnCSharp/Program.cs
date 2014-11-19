@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LearnCSharp
 {
     class Program
@@ -52,7 +53,8 @@ namespace LearnCSharp
            
             station.RollCall();
             Console.ReadKey();*/
-            Document doc1 = new Document
+
+         /*   Document doc1 = new Document
             {
                 Author = "Mathew Adams",
                 DocumentDate = new DateTime(2000, 01, 01),
@@ -62,7 +64,18 @@ namespace LearnCSharp
 
             DocumentProcessor processor = DocumentProcessor.Configure();
             processor.Process(doc1);
-            Console.ReadKey();
+            Console.ReadKey();*/
+
+            /*LinqSamples sample1 = new LinqSamples();
+            sample1.FirstSample();
+            sample1.SecondSample();
+            sample1.thirdSample();
+             */
+
+            /*double pi = "3.1415926535".ToDouble();
+            Console.WriteLine(pi);
+            Console.ReadKey();*/
+
         }
         
         
