@@ -11,6 +11,21 @@
     <AssemblyName>LearnCSharp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -63,15 +78,32 @@
   <ItemGroup>
     <Compile Include="Delegates\Document.cs" />
     <Compile Include="Delegates\DocumentProcessor.cs" />
+    <Compile Include="EntityFrameWork\Models\Travel\InternetSpecial.cs" />
     <Compile Include="LINQ\ExtendStringClass.cs" />
     <Compile Include="LINQ\LinqSamples.cs" />
-    <Compile Include="Models\Actor.cs" />
-    <Compile Include="Models\DvdContext.cs" />
-    <Compile Include="Models\FilmActorRole.cs" />
-    <Compile Include="Models\FilmGenere.cs" />
-    <Compile Include="Models\FilmTitle.cs" />
-    <Compile Include="Models\Producer.cs" />
-    <Compile Include="Models\Role.cs" />
+    <Compile Include="EntityFrameWork\Models\DataAcesss\TravelContext.cs" />
+    <Compile Include="EntityFrameWork\Models\DvdLibrary\Actor.cs" />
+    <Compile Include="EntityFrameWork\Models\DataAcesss\DvdContext.cs" />
+    <Compile Include="EntityFrameWork\Models\DvdLibrary\FilmActorRole.cs" />
+    <Compile Include="EntityFrameWork\Models\DvdLibrary\FilmGenere.cs" />
+    <Compile Include="EntityFrameWork\Models\DvdLibrary\FilmTitle.cs" />
+    <Compile Include="EntityFrameWork\Models\DvdLibrary\Producer.cs" />
+    <Compile Include="EntityFrameWork\Models\DvdLibrary\Role.cs" />
+    <Compile Include="EntityFrameWork\Models\Travel\Destination.cs" />
+    <Compile Include="EntityFrameWork\Models\Travel\Lodging.cs" />
+    <Compile Include="Migrations\201411231524056_InitialCreate.cs" />
+    <Compile Include="Migrations\201411231524056_InitialCreate.Designer.cs">
+      <DependentUpon>201411231524056_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411231825248_updatedb.cs" />
+    <Compile Include="Migrations\201411231825248_updatedb.Designer.cs">
+      <DependentUpon>201411231825248_updatedb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411231846228_addTableInternetSpecial.cs" />
+    <Compile Include="Migrations\201411231846228_addTableInternetSpecial.Designer.cs">
+      <DependentUpon>201411231846228_addTableInternetSpecial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Polymorphism\FireFighter.cs" />
     <Compile Include="Polymorphism\FireFighterBase.cs" />
     <Compile Include="Polymorphism\FireStation.cs" />
@@ -83,13 +115,14 @@
     <Compile Include="Polymorphism\Point.cs" />
     <Compile Include="ClassesObjects\PolarPoint3D.cs" />
     <Compile Include="ClassesObjects\PolarPoint3DFactory.cs" />
-    <Compile Include="Intro\Intro.cs" />
     <Compile Include="Polymorphism\TraineeFireFighter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -97,10 +130,38 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411231524056_InitialCreate.resx">
+      <DependentUpon>201411231524056_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411231825248_updatedb.resx">
+      <DependentUpon>201411231825248_updatedb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411231846228_addTableInternetSpecial.resx">
+      <DependentUpon>201411231846228_addTableInternetSpecial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

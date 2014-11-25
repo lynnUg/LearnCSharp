@@ -11,14 +11,26 @@ namespace LearnCSharp
     {
         static void Main(string[] args)
         {
-           /* 
+            //ViewHelloWorld();
+           // ViewClassesObjects();
+           // ViewPolymorphism();
+           //ViewDelegates();
+           //ViewLinq();
+           // ViewExtensionMethods();
+            ViewActors();
+            InsertDestination();
+           
+        }
+        private static void ViewHelloWorld()
+        {
             Console.WriteLine("Helloworld");
             Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();*/
-
-           
-         /*   Plane someBoeing777 = new Plane
-              {
+            Console.ReadKey();
+        }
+        private static void ViewClassesObjects()
+        {
+            Plane someBoeing777 = new Plane
+             {
                Identifier="BA009",
                Direction=Plane.DirectionOfApproach.Approaching,
                SpeedInMilesPerHour=150,
@@ -39,9 +51,11 @@ namespace LearnCSharp
                 someBoeing777.SpeedInKilometersPerHour
                 );
             someBoeing777.Direction = Plane.DirectionOfApproach.Approaching;
-            Console.ReadKey();*/
-
-         /*   FireFighter joe = new FireFighter { Name = "Joe" };
+            Console.ReadKey();
+        }
+        private static void ViewPolymorphism()
+        {
+            FireFighter joe = new FireFighter { Name = "Joe" };
             joe.ExtinguishFire();
 
             TraineeFireFighter bill = new TraineeFireFighter { Name = "Bill" };
@@ -52,9 +66,12 @@ namespace LearnCSharp
             station.ClockIn("bill");
            
             station.RollCall();
-            Console.ReadKey();*/
+            Console.ReadKey();
 
-         /*   Document doc1 = new Document
+        }
+        private static void ViewDelegates()
+        {
+              Document doc1 = new Document
             {
                 Author = "Mathew Adams",
                 DocumentDate = new DateTime(2000, 01, 01),
@@ -64,26 +81,41 @@ namespace LearnCSharp
 
             DocumentProcessor processor = DocumentProcessor.Configure();
             processor.Process(doc1);
-            Console.ReadKey();*/
-
-            /*LinqSamples sample1 = new LinqSamples();
+            Console.ReadKey();
+        }
+        private static void ViewLinq()
+        {
+            LinqSamples sample1 = new LinqSamples();
             sample1.FirstSample();
             sample1.SecondSample();
             sample1.thirdSample();
-             */
 
-            /*double pi = "3.1415926535".ToDouble();
+        }
+        private static void ViewExtensionMethods()
+        {
+            double pi = "3.1415926535".ToDouble();
             Console.WriteLine(pi);
-            Console.ReadKey();*/
-
+            Console.ReadKey();
+        }
+        private static void ViewActors()
+        {
+           DvdContext db =new DvdContext();
+           var Actors = db.Actors.Where(i => i.Name == "Chris").ToList();
+           Console.WriteLine("Actors Names");
+           foreach (var aActor in Actors)
+           {
+             Console.WriteLine(aActor.Name);
+           }
+           Console.ReadKey();
+        }
+        private static void GetInsertDvd()
+        {
             using (DvdContext db = new DvdContext())
             {
-               
+
                 // film generes
                 FilmGenere actionGenere = db.FilmGeneres.Where
                 (g => g.Name == "Action").SingleOrDefault();
-                FilmGenere scifiGenere = db.FilmGeneres.Where
-                (g => g.Name == "SciFi").SingleOrDefault();
                 // find the producer
                 Producer jjAbrams = db.Producers.Where
                 (p => p.FullName == "J.J. Abrams").SingleOrDefault();
@@ -94,7 +126,7 @@ namespace LearnCSharp
                     FilmTitle film1 = new FilmTitle()
                     {
                         Title = "Mission: Impossible III",
-                        ReleaseDate=DateTime.Now,
+                        ReleaseDate = DateTime.Now,
                         Duration = 126,
                         Story = "Ethan Hunt comes face to face with a dangerous and ...",
                         FilmGenere = actionGenere
@@ -102,69 +134,48 @@ namespace LearnCSharp
                     film1.Producers = new List<Producer>();
                     film1.Producers.Add(jjAbrams);
                     db.FilmTitles.Add(film1);
-                    FilmTitle film2 = new FilmTitle()
-                    {
-                        Title = "Star Trek Into Darkness",
-                        ReleaseDate=DateTime.Now,
-                        Duration = 132,
-                        Story = "After the crew of the" 
-                        +" find an unstoppable force  ...",
-                        FilmGenere = scifiGenere
-                    };
-                    film2.Producers = new List<Producer>();
-                    film2.Producers.Add(jjAbrams);
-                    db.FilmTitles.Add(film2);
-                    // add some film roles
-                    Role leadRole = db.Roles.Where(r => 
+           
+                    // add some film role
+                    Role leadRole = db.Roles.Where(r =>
                     r.Name == "Lead").SingleOrDefault();
-                    Role supportingRole = db.Roles.Where(r => 
-                    r.Name == "Supporting").SingleOrDefault();
-                    // load the actors
-                    Actor tom = db.Actors.Where(a => 
+                   
+                    // load the actor
+                    Actor tom = db.Actors.Where(a =>
                     a.Surname == "Cruise").SingleOrDefault();
-                    Actor quinto = db.Actors.Where(a => 
-                    a.Surname == "Quinto").SingleOrDefault();
-                    Actor pine = db.Actors.Where(a => 
-                    a.Surname == "Pine").SingleOrDefault();
-                    // add filmroles
+                   
+                    // add filmrole
                     db.FilmActorRoles.Add(new FilmActorRole()
                     {
                         Actor = tom,
                         Role = leadRole,
                         FilmTitle = film1,
                         Character = "Ethan",
-                        Description = "Ethan Hunt comes face to face with" 
-                        +"a dangerous and sadistic arms dealer while trying to "
-                        +"keep his identity secret in order to protect his girlfriend."
-                     });
-                    db.FilmActorRoles.Add(new FilmActorRole()
-                    {
-                         Actor = pine,
-                         Role = leadRole,
-                         FilmTitle = film2,
-                         Character = "Kirk",
-                         Description = "Captain Kirk"
+                        Description = "Ethan Hunt comes face to face with"
+                        + "a dangerous and sadistic arms dealer while trying to "
+                        + "keep his identity secret in order to protect his girlfriend."
                     });
-                   db.FilmActorRoles.Add(new FilmActorRole()
-                   {
-                          Actor = quinto,
-                          Role = supportingRole,
-                          FilmTitle = film2,
-                          Character = "Spock",
-                         Description = "Spock was born in 2230, "
-                         +"n the city of Shi'Kahr on the planet Vulcan"
-                    });
-              }
-             // save data to db
-             db.SaveChanges();
-             var Actors = db.FilmActorRoles.ToList();
-             foreach (var aActor in Actors)
-             {
-                  Console.WriteLine(aActor.Description);
-             }
-                Console.ReadKey();
+                   
+                }
+
+                db.SaveChanges();
             }
             
+          
+
+        }
+        private static void InsertDestination()
+        {
+            var destination = new Destination
+            {
+                Country = "Indonesia",
+                Description = "EcoTourism at its best in exquisite Bali",
+                //Name = "Bali"
+            };
+            using (var context = new TravelContext())
+            {
+                context.Destinations.Add(destination);
+                context.SaveChanges();
+            }
         }
         
         
