@@ -17,8 +17,10 @@ namespace LearnCSharp
            //ViewDelegates();
            //ViewLinq();
            // ViewExtensionMethods();
-            ViewActors();
-            InsertDestination();
+            //ViewActors();
+            //InsertDestination();
+            ViewAsyncTaks();
+            
            
         }
         private static void ViewHelloWorld()
@@ -176,6 +178,24 @@ namespace LearnCSharp
                 context.Destinations.Add(destination);
                 context.SaveChanges();
             }
+        }
+        private static void ViewAsyncTaks()
+        {
+            DateTime t1 = DateTime.Now;
+            AsyncTask test = new AsyncTask();
+            test.PrintPrimaryNumbers();
+            var ts1 = DateTime.Now.Subtract(t1);
+            Console.WriteLine("Finished Sync and started Async");
+            var t2 = DateTime.Now;
+            test.PrintPrimaryNumbersAsync();
+            var ts2 = DateTime.Now.Subtract(t2);
+
+            Console.WriteLine(string.Format(
+              "It took {0} for the sync call and {1} for the Async one", ts1, ts2));
+
+            Console.WriteLine("Any Key to terminate!!");
+
+            Console.ReadKey();
         }
         
         
